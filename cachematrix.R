@@ -9,27 +9,27 @@ makeCacheMatrix <- function(x = matrix()) {
    			 x <<- y
    			 m <<- NULL} ## set data values within a object
 			get <- function() x ## defines the getter for the vector x
-			setmean <- function(mean) m <<- mean ## defines the setter for the mean m
-			getmean <- function() m ## defines the getter for the mean m
+			setinverse <- function(inverse) m <<- inverse ## defines the setter for the inverse m
+			getinverse <- function() m ## defines the getter for the inverse m
 
 			list(set = set, get = get,
-    			setmean = setmean,
-    			getmean = getmean)   ## creates a list
+    			setinverse = setinverse,
+    			getinverse = getinverse)   ## creates a list
 
 
 ## Write a short comment describing this function
 
-cacheSolve <- function(x, makeCacheMatrix) {
+cacheSolve <- function(x, .....) {
         ## Return a matrix that is the inverse of 'x'
 
 
-		m <- x$getmean() ##get input object
+		m <- x$getinverse() ##get input object
 		if(!is.null(m)) {
           message("getting cached data")
           return(m)} ## Checks if there is a valued cached mean
 
 		 data <- x$get()
-     		m <- mean(data, ...)
-    	 	x$setmean(m)
-    	 	m## sets the mean in the input object
+     		m <- inverse(data, ...)
+    	 	x$setinverse(m)
+    	 	m## sets the inverse in the input object
 }
